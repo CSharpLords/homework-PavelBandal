@@ -1,0 +1,4 @@
+C:\Users\Павел\Documents\GitHub\homework-PavelBandal\ConsoleApplication111\ConsoleApplication111\bin\Debug\ConsoleApplication111.exe
+C:\Users\Павел\Documents\GitHub\homework-PavelBandal\ConsoleApplication111\ConsoleApplication111\bin\Debug\ConsoleApplication111.pdb
+C:\Users\Павел\Documents\GitHub\homework-PavelBandal\ConsoleApplication111\ConsoleApplication111\obj\x86\Debug\ConsoleApplication111.exe
+C:\Users\Павел\Documents\GitHub\homework-PavelBandal\ConsoleApplication111\ConsoleApplication111\obj\x86\Debug\ConsoleApplication111.pdb
