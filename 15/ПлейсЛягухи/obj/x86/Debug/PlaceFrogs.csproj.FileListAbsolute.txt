@@ -1,0 +1,8 @@
+C:\Users\Павел\Documents\GitHub\homework-PavelBandal\15\PlaceFrogs\bin\Debug\PlaceFrogs.exe
+C:\Users\Павел\Documents\GitHub\homework-PavelBandal\15\PlaceFrogs\bin\Debug\PlaceFrogs.pdb
+C:\Users\Павел\Documents\GitHub\homework-PavelBandal\15\PlaceFrogs\obj\x86\Debug\PlaceFrogs.csprojResolveAssemblyReference.cache
+C:\Users\Павел\Documents\GitHub\homework-PavelBandal\15\PlaceFrogs\obj\x86\Debug\PlaceFrogs.Form1.resources
+C:\Users\Павел\Documents\GitHub\homework-PavelBandal\15\PlaceFrogs\obj\x86\Debug\PlaceFrogs.Properties.Resources.resources
+C:\Users\Павел\Documents\GitHub\homework-PavelBandal\15\PlaceFrogs\obj\x86\Debug\PlaceFrogs.csproj.GenerateResource.Cache
+C:\Users\Павел\Documents\GitHub\homework-PavelBandal\15\PlaceFrogs\obj\x86\Debug\PlaceFrogs.exe
+C:\Users\Павел\Documents\GitHub\homework-PavelBandal\15\PlaceFrogs\obj\x86\Debug\PlaceFrogs.pdb
