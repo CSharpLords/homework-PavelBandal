@@ -8,7 +8,8 @@ namespace Quest2
 {
     class Program
     {
-        static double HP = 50;
+        static bool cheatermod = false;
+        static double HP = 70;
         static double DMG = 10;
         static bool haveHorse = true;
         static double money = 0;
@@ -22,13 +23,12 @@ namespace Quest2
         static double maxGiantHP = 220;
         static void Main(string[] args)
         {
-            Console.WriteLine("У героя нет ничего, кроме волосатой коровы. Даже меча, и того нет! Но он мечтает о подвигах. Пока он был в яйце, он узнал, что бухой Дядя Витя повадился от скуки крушить и ломать дома крестьян, красть скот, вытаптывать поля.");
+            Console.WriteLine("У героя нет ничего, кроме волосатой коровы. Даже меча, и того нет! Но он мечтает о подвигах. Пока он был в яйце, он узнал, что бухой Дядя Витя повадился от скуки крушить и ломать дома крестьян, красть скот, вытаптывать поля. Мама покормила тебя пыльцой фей и ты мгновенно вырос! Ой, ты походу Лунтик! Ты жаждешь жертвоприношений и душ невинных. Но, сначала обойдёмся двумя действиями");
             Greenfields();
             Console.ReadLine();
         }
         static void Greenfields()
         {
-            Console.WriteLine("Мама покормила тебя пыльцой фей и ты мгновенно вырос! Ой, ты походу Лунтик! Ты жаждешь жертвоприношений и душ невинных. Но, сначала обойдёмся двумя действиями");
             Console.WriteLine("Выбери действие:");
             Console.WriteLine("1.Выбрать эту локацию и подойти к лавке торговца");
             Console.WriteLine("2.Послушать историю Хранителя Поля");
@@ -84,6 +84,17 @@ namespace Quest2
             else if (answer == 5)
             {
                 BuyAidKit();
+            }
+            else if (answer == 6)
+            {
+                Console.WriteLine("!!FUCK THE SYSTEM!!CHEATER MOD IS ENABLE!!WHOOOOOOOOOOOOOO!!");
+                cheatermod = true;
+                Shop();
+            }
+            if (cheatermod == true)
+            {
+                DMG = 999;
+                HP = 999;
             }
         }
         static void FieldGuardian()
@@ -214,8 +225,8 @@ namespace Quest2
             {
                 if (HP > 0)
                 {
-                    AskQuestion();
-                    HeroAttack();
+                    AskQuestionRobbers();
+                    HeroAttackRobbers();
                 }
 
                 else if (HP <= 0)
@@ -227,10 +238,11 @@ namespace Quest2
             else
             {
                 HP = 180;
-                Console.ForegroundColor = ConsoleColor.DarkBlue;
+                Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine("Ты делаешь шашлык-машлык из разбойников");
                 Console.WriteLine("Ты высосал их души и кровь.Твоё здоровье восстановилось, а ещё прибавилось бонусное!");
                 Console.WriteLine("Теперь твоё здоровье: " + HP);
+                Console.ForegroundColor = ConsoleColor.Gray;
                 ChooseLocation();
             }
         }
@@ -241,11 +253,19 @@ namespace Quest2
             robbersDMG = GetReducedAttack(robbersHP, maxRobbersHP, robbersDMG);
             Console.WriteLine("Твоё здоровье:" + HP);
         }
-        static void HeroAttack()
+        static void HeroAttackRobbers()
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Ты атакуешь!");
             robbersHP = robbersHP - DMG;
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("Хп : " + robbersHP);
+        }
+        static void HeroAttackGiant()
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Ты атакуешь!");
+            giantHP = giantHP - DMG;
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("Хп : " + robbersHP);
         }
@@ -256,6 +276,7 @@ namespace Quest2
             Console.WriteLine("1.Выйти из игры.");
             Console.WriteLine("2.Начать сначала.");
             int lastAnswer = int.Parse(Console.ReadLine());
+            Console.ForegroundColor = ConsoleColor.Gray;
             if (lastAnswer == 1)
             {
                 Environment.Exit(0);
@@ -266,7 +287,7 @@ namespace Quest2
                 Greenfields();
             }
         }
-        static void AskQuestion()
+        static void AskQuestionRobbers()
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Выбери дейтсвие:");
@@ -277,7 +298,7 @@ namespace Quest2
 
             if (answerQuestion == 1)
             {
-                HeroAttack();
+                HeroAttackRobbers();
                 FightRobbers();
             }
             else if (answerQuestion == 2)
@@ -287,8 +308,30 @@ namespace Quest2
                 Greenfields();
             }
         }
+        static void AskQuestionGiant()
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Выбери дейтсвие:");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("1.Атаковать");
+            Console.WriteLine("2.Run, vasya, run vasya, run, vasya run.");
+            int answerQuestion = int.Parse(Console.ReadLine());
+
+            if (answerQuestion == 1)
+            {
+                HeroAttackGiant();
+                FightRobbers();
+            }
+            else if (answerQuestion == 2)
+            {
+                giantDMG = 100;
+                giantHP = 200;
+                Greenfields();
+            }
+        }
         static void Reset()
         {
+            cheatermod = false;
             HP = 10;
             DMG = 10;
             haveHorse = true;
@@ -313,7 +356,7 @@ namespace Quest2
                 if (HP > 0)
                 {
                     AskQuestionFG();
-                    HeroAttack();
+                    HeroAttackGiant();
                 }
 
                 else if (HP <= 0)
@@ -350,7 +393,7 @@ namespace Quest2
 
             if (answerQuestion == 1)
             {
-                HeroAttack();
+                HeroAttackGiant();
                 FightGiant();
             }
             else if (answerQuestion == 2)
