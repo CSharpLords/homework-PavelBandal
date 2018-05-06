@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PashaAsteriskLine
+namespace CustomRectangle
 {
 
     class Program
