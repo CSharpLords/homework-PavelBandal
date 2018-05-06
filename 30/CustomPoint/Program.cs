@@ -16,9 +16,8 @@ namespace CustomPoint {
 			Point point2 = new Point();
 			point2.x = 6;
 			point2.y = 3;
-			point2.symbol = "#";
-			point2.Draw();
-
+            point2.symbol = "#";
+            point2.Draw();
 			Console.ReadLine();
 		}
 	}
