@@ -8,9 +8,9 @@ namespace Quest2
 {
     class Program
     {
-        static bool cheatermod = false;
         static double HP = 70;
         static double DMG = 10;
+        static double DEF = 0;
         static bool haveHorse = true;
         static double money = 0;
         static bool haveSword = false;
@@ -21,6 +21,10 @@ namespace Quest2
         static double giantDMG = 100;
         static double giantHP = 200;
         static double maxGiantHP = 220;
+        static double dragonDMG = 150;
+        static double dragonHP = 500;
+        static double maxDragonHP = 700;
+        static bool cheatermod = false;
         static void Main(string[] args)
         {
             Console.WriteLine("У героя нет ничего, кроме волосатой коровы. Даже меча, и того нет! Но он мечтает о подвигах. Пока он был в яйце, он узнал, что бухой Дядя Витя повадился от скуки крушить и ломать дома крестьян, красть скот, вытаптывать поля. Мама покормила тебя пыльцой фей и ты мгновенно вырос! Ой, ты походу Лунтик! Ты жаждешь жертвоприношений и душ невинных. Но, сначала обойдёмся двумя действиями");
@@ -188,6 +192,7 @@ namespace Quest2
                     money -= 50;
                     haveArmour = true;
                     HP = 100;
+                    DEF = 25;
                     Console.WriteLine("Лови доспехи! Они только over100500 лет назад отлиты были!");
                     Console.WriteLine("Здоровье: " + HP);
                     Console.WriteLine("Баланс:" + money);
@@ -249,6 +254,7 @@ namespace Quest2
         static void RobbersAttack()
         {
             Console.WriteLine("Разбойники атакуют!");
+            robbersDMG -= DEF;
             HP -= robbersDMG;
             robbersDMG = GetReducedAttack(robbersHP, maxRobbersHP, robbersDMG);
             Console.WriteLine("Твоё здоровье:" + HP);
@@ -341,6 +347,9 @@ namespace Quest2
             robbersDMG = 80;
             robbersHP = 110;
             maxRobbersHP = 110;
+            dragonDMG = 150;
+            dragonHP = 500;
+            maxDragonHP = 700;
         }
         static double GetReducedAttack(double health, double maxHealth, double maxAttack)
         {
@@ -370,9 +379,8 @@ namespace Quest2
 
 
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
-                Console.WriteLine("Ты показываешь ему фотку его тёщи! Он сдох от инфаркта!");
-
-                End();
+                Console.WriteLine("Ты показываешь ему фотку его тёщи! Он сдох от инфаркта!(ЖМИ ENTER)");
+                Console.WriteLine("Похоже в Дядь Васе был запечатан великий ДЬРЯКИОНОКОТЕ!!!");
             }
         }
         static void GiantAttack()
@@ -400,6 +408,63 @@ namespace Quest2
             {
                 Greenfields();
             }
+        }
+        static void AskQuestionDragon()
+        {
+
+        }
+        static void HeroAttackDragon()
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Выбери дейтсвие:");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("1.Атаковать");
+            Console.WriteLine("2Run, vasya, run vasya, run, vasya run.");
+            int answerQuestion = int.Parse(Console.ReadLine());
+
+            if (answerQuestion == 1)
+            {
+                HeroAttackDragon();
+                FightDragon();
+            }
+            else if (answerQuestion == 2)   
+            {
+                Greenfields();
+            }
+        }
+        static void FightDragon() 
+        {
+            DragonAttack();
+            if (dragonHP > 0)
+            {
+                if (HP > 0)
+                {
+                    AskQuestionFG();
+                    HeroAttackDragon();
+                }
+
+                else if (HP <= 0)
+                {
+                    Console.WriteLine("Ты сдох!");
+                    End();
+                }
+            }
+            else
+            {
+
+
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.WriteLine("Ты показываешь ему фотку его тёщи! Он сдох от инфаркта!(ЖМИ ENTER)");
+                Console.WriteLine("Похоже в Дядь Васе был запечатан великий ДЬРЯКИОНОКОТЕ!!!");
+            }
+        }
+        static void DragonAttack()
+        {
+            Console.WriteLine("ДЬРЯКИОНОКОТЕ атакует!");
+            dragonDMG -= DEF;
+            HP -= dragonDMG;
+            dragonDMG = GetReducedAttack(dragonHP, maxDragonHP, dragonDMG);
+            Console.WriteLine("Твоё здоровье:" + HP);
         }
     }
 }
