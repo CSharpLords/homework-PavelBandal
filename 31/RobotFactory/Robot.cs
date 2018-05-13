@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 
 namespace RobotFactory {
 	class Robot {
-		private static int lastID = 0;
-		public Robot() {
+        int id = 0;
+        private static int lastID = 0;
+        public Robot() {
 			lastID = lastID + 1;
-		}
+            id = lastID;
+        }
 
 		public int GetID() {
-			return lastID;
+			return id;
 		}
 	}
 }
